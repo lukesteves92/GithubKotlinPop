@@ -8,13 +8,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
-import br.com.challenge.kotlinpop.common.util.dimens.Dimens.helloDimenNone
+import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenNone
 
 @Composable
 fun Modifier.defaultScreenColumnModifier(
-    paddingValues: PaddingValues = PaddingValues(helloDimenNone),
-    horizontalPadding: Dp = helloDimenNone,
-    verticalPadding: Dp = helloDimenNone
+    paddingValues: PaddingValues = PaddingValues(kotlinPopDimenNone),
+    horizontalPadding: Dp = kotlinPopDimenNone,
+    verticalPadding: Dp = kotlinPopDimenNone
 ): Modifier {
     return this
         .fillMaxSize()
