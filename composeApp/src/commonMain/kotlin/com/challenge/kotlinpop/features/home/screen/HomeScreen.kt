@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenLarge
 import br.com.challenge.kotlinpop.common.util.modifier.defaultScreenColumnModifier
 import br.com.challenge.kotlinpop.ds.components.about.AboutComponent
+import br.com.challenge.kotlinpop.ds.components.chip.CustomChip
 import br.com.challenge.kotlinpop.ds.components.top.KotlinPopTopBar
 import com.challenge.kotlinpop.domain.toModel
 import com.challenge.kotlinpop.platform.Platform
@@ -51,6 +52,8 @@ fun HomeContent(navigateToDetails: () -> Unit) {
                 AnimatedVisibility(showAboutContent) {
                     AboutComponent(items = Platform().toModel())
                 }
+
+                CustomChip("Total: 3000")
 
                 Button(onClick = { navigateToDetails.invoke() }) {
                     Text("Navigate to Details!")
