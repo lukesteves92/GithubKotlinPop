@@ -7,12 +7,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import br.com.challenge.kotlinpop.ds.ui.theme.KotlinPopTheme
 import com.challenge.kotlinpop.Greeting
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -22,10 +22,11 @@ import githubkotlinpop.composeapp.generated.resources.compose_multiplatform
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
+    KotlinPopTheme {
         Scaffold(
             modifier = Modifier
                 .imePadding(),
+            containerColor = KotlinPopTheme.colorScheme.screen.background,
             content = { paddingValues ->
                 var showContent by remember { mutableStateOf(false) }
                 Column(Modifier.fillMaxWidth().padding(paddingValues), horizontalAlignment = Alignment.CenterHorizontally) {
