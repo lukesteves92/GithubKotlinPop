@@ -45,4 +45,11 @@ object Constants {
         const val KEY_KOTLIN_POP_OPACITY_10_PERCENT: Float = 0.1f
 
     }
+
+    // Contains constants for About Component
+    object AboutComponent {
+        const val KEY_KOTLIN_POP_ABOUT_SYSTEM = "Operating System"
+        const val KEY_KOTLIN_POP_ABOUT_DEVICE = "Device"
+        const val KEY_KOTLIN_POP_ABOUT_DENSITY = "Density"
+    }
 }

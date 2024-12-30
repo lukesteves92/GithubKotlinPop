@@ -1,3 +1,5 @@
 <resources>
+    <!--    Button Component-->
+    <string name="kotlin_pop_bt_about_txt">About</string>
 
 </resources>

@@ -9,6 +9,6 @@ data class IconComponentModel(
     val painter: Painter? = null,
     val imageVector: ImageVector? = null,
     val contentDescription: String? = null,
-    val tint: Color = Color.Unspecified,
+    val tint: Color = Color.Black,
     val modifier: Modifier = Modifier
 )
