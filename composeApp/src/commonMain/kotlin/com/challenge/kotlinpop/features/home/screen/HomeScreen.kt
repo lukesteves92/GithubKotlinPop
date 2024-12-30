@@ -18,22 +18,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenLarge
 import br.com.challenge.kotlinpop.common.util.modifier.defaultScreenColumnModifier
+import br.com.challenge.kotlinpop.ds.components.top.KotlinPopTopBar
 import com.challenge.kotlinpop.Greeting
 import githubkotlinpop.composeapp.generated.resources.Res
 import githubkotlinpop.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun HomeScreen() {
-    HomeContent()
+fun HomeScreen(navigateToDetails: () -> Unit) {
+    HomeContent(navigateToDetails = navigateToDetails)
 }
 
 @Composable
-fun HomeContent() {
+fun HomeContent(navigateToDetails: () -> Unit) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = Color.Transparent,
-        topBar = {},
+        topBar = { KotlinPopTopBar() },
         bottomBar = {},
         floatingActionButton = {},
         content = { paddingValues ->
@@ -54,6 +55,10 @@ fun HomeContent() {
                         Image(painterResource(Res.drawable.compose_multiplatform), null)
                         Text("Compose: $greeting")
                     }
+                }
+
+                Button(onClick = { navigateToDetails.invoke() }) {
+                    Text("Navigate to Details!")
                 }
             }
         }

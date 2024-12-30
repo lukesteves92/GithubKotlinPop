@@ -26,7 +26,7 @@ fun LTAsusFontFamily(): FontFamily {
     )
 }
 
-object HelloDevTypography {
+object KotlinPopTypography {
     // Heading
     val headingDisplay = TextStyle(
         fontStyle = FontStyle.Normal,

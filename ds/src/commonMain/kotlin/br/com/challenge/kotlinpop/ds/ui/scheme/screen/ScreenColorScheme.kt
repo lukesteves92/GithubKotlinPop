@@ -1,4 +1,4 @@
-package br.com.hellodev.ds.ui.scheme.screen
+package br.com.challenge.kotlinpop.ds.ui.scheme.screen
 
 import androidx.compose.ui.graphics.Color
 

@@ -8,8 +8,8 @@ import androidx.compose.runtime.compositionLocalOf
 import br.com.challenge.kotlinpop.ds.ui.color.KotlinPopColorBaselineText
 import br.com.challenge.kotlinpop.ds.ui.color.ScreenBackgroundColor
 import br.com.challenge.kotlinpop.ds.ui.scheme.main.MyColorScheme
-import br.com.hellodev.ds.ui.scheme.screen.ScreenColorScheme
-import br.com.hellodev.ds.ui.scheme.text.TextColorScheme
+import br.com.challenge.kotlinpop.ds.ui.scheme.screen.ScreenColorScheme
+import br.com.challenge.kotlinpop.ds.ui.scheme.text.TextColorScheme
 
 val DefaultColorScheme = MyColorScheme(
     text = TextColorScheme(

@@ -20,11 +20,15 @@ fun HomeNavHost(
         modifier = modifier
     ) {
         composable<HomeRoutes.Home> {
-            HomeScreen()
+            HomeScreen(
+                navigateToDetails = { navHostController.navigate(HomeRoutes.Details) }
+            )
         }
 
         composable<HomeRoutes.Details> {
-            DetailsScreen()
+            DetailsScreen(
+                onBackPressed = { navHostController.popBackStack() }
+            )
         }
     }
 }
