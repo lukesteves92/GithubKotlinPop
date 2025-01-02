@@ -1,4 +1,4 @@
-package br.com.challenge.kotlinpop.common.domain
+package br.com.challenge.kotlinpop.common.domain.components.image
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter

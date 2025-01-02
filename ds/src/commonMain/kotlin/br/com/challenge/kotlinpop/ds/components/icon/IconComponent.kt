@@ -2,7 +2,7 @@ package br.com.challenge.kotlinpop.ds.components.icon
 
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import br.com.challenge.kotlinpop.common.domain.IconComponentModel
+import br.com.challenge.kotlinpop.common.domain.components.icon.IconComponentModel
 
 @Composable
 fun IconComponent(model: IconComponentModel) {

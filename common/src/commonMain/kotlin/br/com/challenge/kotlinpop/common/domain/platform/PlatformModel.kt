@@ -1,4 +1,4 @@
-package br.com.challenge.kotlinpop.common.domain
+package br.com.challenge.kotlinpop.common.domain.platform
 
 data class PlatformModel(
     val isDebugVersion: Boolean,

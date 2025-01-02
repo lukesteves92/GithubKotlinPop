@@ -22,7 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
-import br.com.challenge.kotlinpop.common.domain.IconComponentModel
+import br.com.challenge.kotlinpop.common.domain.components.icon.IconComponentModel
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderRadiusSm
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderRadiusXs
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderWidthXs

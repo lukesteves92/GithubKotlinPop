@@ -1,6 +1,6 @@
-package com.challenge.kotlinpop.domain
+package com.challenge.kotlinpop.domain.mapping
 
-import br.com.challenge.kotlinpop.common.domain.PlatformModel
+import br.com.challenge.kotlinpop.common.domain.platform.PlatformModel
 import com.challenge.kotlinpop.platform.Platform
 
 fun Platform.toModel() = PlatformModel(

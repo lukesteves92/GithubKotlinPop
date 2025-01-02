@@ -47,6 +47,9 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.runtime.compose)
 
+            // Ktor - Http Request
+            implementation(libs.bundles.ktor)
+
             //Paging3
             implementation(libs.paging.compose.common)
             implementation(libs.paging.common)

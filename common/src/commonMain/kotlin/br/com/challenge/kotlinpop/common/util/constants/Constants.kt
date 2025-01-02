@@ -28,9 +28,7 @@ object Constants {
         const val KEY_API_CODE_SUCCESS_MIN = 200
         const val KEY_API_CODE_SUCCESS_MAX = 299
         const val KEY_API_ERROR_MESSAGE_DEFAULT = "Não conseguimos carregar suas informações"
-        const val KEY_API_ERROR_DESCRIPTION_DEFAULT = "Algo deu errado e não conseguimos prosseguir, por favor, tente novamente"
         const val KEY_INTERNET_ERROR_MESSAGE_DEFAULT = "Parece que você está sem internet"
-        const val KEY_INTERNET_ERROR_DESCRIPTION_DEFAULT = "Verifique sua conexão e tente novamente"
     }
 
     // Contains constants for Design keys

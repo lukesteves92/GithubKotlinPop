@@ -11,7 +11,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import br.com.challenge.kotlinpop.common.domain.PlatformModel
+import br.com.challenge.kotlinpop.common.domain.platform.PlatformModel
 import br.com.challenge.kotlinpop.common.util.constants.Constants.AboutComponent.KEY_KOTLIN_POP_ABOUT_DENSITY
 import br.com.challenge.kotlinpop.common.util.constants.Constants.AboutComponent.KEY_KOTLIN_POP_ABOUT_DEVICE
 import br.com.challenge.kotlinpop.common.util.constants.Constants.AboutComponent.KEY_KOTLIN_POP_ABOUT_SYSTEM

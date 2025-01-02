@@ -8,7 +8,5 @@ data class NetworkApiError(
     val error: String = EMPTY_STRING_DEFAULT,
     val status: String = EMPTY_STRING_DEFAULT,
     val message: String = EMPTY_STRING_DEFAULT,
-    val description: String = EMPTY_STRING_DEFAULT,
-    val action: String = EMPTY_STRING_DEFAULT,
     val type: NetworkErrorType = NetworkErrorType.SERVER_ERROR
 ) : ApiError

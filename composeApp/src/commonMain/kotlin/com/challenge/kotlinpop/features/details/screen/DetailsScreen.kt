@@ -16,7 +16,7 @@ import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenLarge
 import br.com.challenge.kotlinpop.common.util.modifier.defaultScreenColumnModifier
 import br.com.challenge.kotlinpop.ds.components.about.AboutComponent
 import br.com.challenge.kotlinpop.ds.components.top.KotlinPopTopBar
-import com.challenge.kotlinpop.domain.toModel
+import com.challenge.kotlinpop.domain.mapping.toModel
 import com.challenge.kotlinpop.platform.Platform
 
 @Composable

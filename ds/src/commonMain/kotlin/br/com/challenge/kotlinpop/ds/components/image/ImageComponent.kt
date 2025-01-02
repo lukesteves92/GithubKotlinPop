@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import br.com.challenge.kotlinpop.common.domain.ImageComponentModel
+import br.com.challenge.kotlinpop.common.domain.components.image.ImageComponentModel
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenNone
 
 @Composable

@@ -22,7 +22,7 @@ import br.com.challenge.kotlinpop.ds.components.about.AboutComponent
 import br.com.challenge.kotlinpop.ds.components.chip.CustomChip
 import br.com.challenge.kotlinpop.ds.components.item.GitHubRepositoryItem
 import br.com.challenge.kotlinpop.ds.components.top.KotlinPopTopBar
-import com.challenge.kotlinpop.domain.toModel
+import com.challenge.kotlinpop.domain.mapping.toModel
 import com.challenge.kotlinpop.platform.Platform
 
 @Composable

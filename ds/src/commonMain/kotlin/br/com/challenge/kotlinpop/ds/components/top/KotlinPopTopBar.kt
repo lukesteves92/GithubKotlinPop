@@ -1,6 +1,5 @@
 package br.com.challenge.kotlinpop.ds.components.top
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -18,8 +17,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import br.com.challenge.kotlinpop.common.domain.IconComponentModel
-import br.com.challenge.kotlinpop.common.domain.ImageComponentModel
+import br.com.challenge.kotlinpop.common.domain.components.icon.IconComponentModel
+import br.com.challenge.kotlinpop.common.domain.components.image.ImageComponentModel
 import br.com.challenge.kotlinpop.common.util.constants.Constants.Text.EMPTY_STRING_DEFAULT
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderWidthLg
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderWidthSm
