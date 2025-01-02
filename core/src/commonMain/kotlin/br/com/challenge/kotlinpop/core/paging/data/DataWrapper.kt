@@ -1,7 +1,0 @@
-package br.com.challenge.kotlinpop.core.paging.data
-
-data class DataWrapper<T>(
-    val totalPages:Int,
-    val numberOfResult:Int,
-    val result:List<T>
-)

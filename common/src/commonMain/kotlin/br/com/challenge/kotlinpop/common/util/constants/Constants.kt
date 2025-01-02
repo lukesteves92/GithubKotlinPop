@@ -50,4 +50,12 @@ object Constants {
         const val KEY_KOTLIN_POP_ABOUT_DEVICE = "Device"
         const val KEY_KOTLIN_POP_ABOUT_DENSITY = "Density"
     }
+
+    // Contains constants for Paging
+    object Paging {
+        const val KEY_PAGING_DEFAULT_PAGE = 1
+        const val KEY_PAGING_DEFAULT_LIMIT = 10
+        const val KEY_PAGING_DEFAULT_SORT = "stars"
+        const val KEY_PAGING_DEFAULT_LANGUAGE = "language:Kotlin"
+    }
 }

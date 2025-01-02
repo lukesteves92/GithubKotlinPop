@@ -1,6 +1,6 @@
 package com.challenge.kotlinpop.di.data
 
-import com.challenge.kotlinpop.data.HomeRepositoryImpl
+import com.challenge.kotlinpop.data.repository.HomeRepositoryImpl
 import com.challenge.kotlinpop.domain.repository.HomeRepository
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind

@@ -23,10 +23,16 @@ import br.com.challenge.kotlinpop.ds.components.chip.CustomChip
 import br.com.challenge.kotlinpop.ds.components.item.GitHubRepositoryItem
 import br.com.challenge.kotlinpop.ds.components.top.KotlinPopTopBar
 import com.challenge.kotlinpop.domain.mapping.toModel
+import com.challenge.kotlinpop.features.home.viewmodel.HomeViewModel
 import com.challenge.kotlinpop.platform.Platform
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun HomeScreen(navigateToDetails: () -> Unit) {
+
+    // ViewModel and state retrieval for the home process
+    val viewModel = koinViewModel<HomeViewModel>()
+
     HomeContent(navigateToDetails = navigateToDetails)
 }
 
