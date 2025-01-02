@@ -10,7 +10,7 @@ data class GithubRepositoryResultResponse(
     @SerialName("incomplete_results")
     val incompleteResults: Boolean? = null,
     @SerialName("items")
-    val githubRepositoryItemDomain: List<GithubRepositoryItemResponse?>? = null,
+    val githubRepositoryItemResponse: List<GithubRepositoryItemResponse>? = emptyList(),
     @SerialName("total_count")
     val totalCount: Int? = null
 )

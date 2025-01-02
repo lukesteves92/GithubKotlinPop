@@ -47,7 +47,7 @@ fun GitHubRepositoryItem(
     username: String,
     fullName: String,
     forks: Int,
-    stars: Int,
+    stars: Double,
     avatarUrl: String,
     modifier: Modifier = Modifier
 ) {

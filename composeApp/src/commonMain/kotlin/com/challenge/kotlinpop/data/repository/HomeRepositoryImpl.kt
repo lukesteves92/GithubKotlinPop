@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import br.com.challenge.kotlinpop.common.data.mapping.repository.toDomain
 import br.com.challenge.kotlinpop.common.data.response.repository.item.GithubRepositoryItemResponse
+import br.com.challenge.kotlinpop.common.data.response.repository.result.GithubRepositoryResultResponse
 import br.com.challenge.kotlinpop.common.domain.model.repository.item.GithubRepositoryItemDomain
 import br.com.challenge.kotlinpop.common.domain.request.PagingRequest
 import br.com.challenge.kotlinpop.core.paging.BasePagingSource
@@ -35,9 +36,9 @@ class HomeRepositoryImpl(
                            parameter("sort", pagingRequest.sort)
                        }
                    },
-                   responseHandler = { response -> response.body<List<GithubRepositoryItemResponse>>().map { it.toDomain() } }
+                   responseHandler = { response -> response.body<GithubRepositoryResultResponse>().githubRepositoryItemResponse?.map { it.toDomain() } ?: emptyList() }
                )
            }
         }
-    ).flow.flowOn(Dispatchers.IO)
+    ).flow
 }

@@ -124,6 +124,6 @@ fun GithubRepositoryOwnerResponse.toDomain() = GithubRepositoryOwnerDomain(
 
 fun GithubRepositoryResultResponse.toDomain() = GithubRepositoryResultDomain(
     incompleteResults = this.incompleteResults,
-    githubRepositoryItemDomain = this.githubRepositoryItemDomain?.map { it?.toDomain() },
+    githubRepositoryItemDomain = this.githubRepositoryItemResponse?.map { it.toDomain() },
     totalCount = this.totalCount
 )
