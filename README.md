@@ -5,33 +5,52 @@ Welcome to Github KotlinPop App project! This guide will walk you through settin
 
 `Jetpack Compose` & `MVI Architecture` & `KMP`
 
-## 🛠 Structure
+## 📖 About the Project
 
-This is a Kotlin Multiplatform project targeting Android, iOS.
+Github KotlinPop is a project that utilizes the [GitHub API](https://api.github.com) to display Kotlin repositories and their associated Pull Requests. The app is built with Kotlin Multiplatform (KMP), enabling shared logic and UI between Android and iOS platforms. The goal is to provide an efficient and modular solution to explore Kotlin repositories and their contribution details.
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+## 📷 Android Previews
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+<p align="center">
+<img src="previews/android01.png" alt="drawing" width="200px" />
+<img src="previews/android02.png" alt="drawing" width="200px" />
+<img src="previews/android03.png" alt="drawing" width="200px" />
+<img src="previews/android04.png" alt="drawing" width="200px" /></br>
+</p>
 
-## 🛠 Learn more about
+## 📷 iOS Previews
 
-[Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+<p align="center">
+<img src="previews/ios01.png" alt="drawing" width="200px" />
+<img src="previews/ios02.png" alt="drawing" width="200px" />
+<img src="previews/ios03.png" alt="drawing" width="200px" />
+<img src="previews/ios04.png" alt="drawing" width="200px" /></br>
+</p>
 
 ## 🛠 Tech Stack & Open Source Libraries
 - Minimum SDK level 24.
-- 100% [Jetpack Compose](https://developer.android.com/jetpack/compose) based + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
-- Jetpack
-  - Compose: Android’s modern toolkit for building native UI.
-  - ViewModel: UI related data holder and lifecycle aware.
-  - App Startup: Provides a straightforward, performant way to initialize components at application startup.
-  - Navigation: For navigating screens and [Koin Compose] for injecting dependencies.
+- 100% [Jetpack Compose](https://developer.android.com/jetpack/compose) based + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous operations.
+- [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview): Efficient pagination of large datasets.
+- [Ktor](https://ktor.io/): For network requests.
+- [StateFlow](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/): To manage state within the app.
+- [SharedFlow](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-shared-flow/): For event-driven programming.
+- Jetpack:
+    - Compose: Android’s modern toolkit for building native UI.
+    - ViewModel: UI-related data holder and lifecycle-aware.
+    - App Startup: Provides a straightforward, performant way to initialize components at application startup.
+    - Navigation: For navigating screens and [Koin Compose] for injecting dependencies.
 - [Koin]: Dependency Injection.
+
+## 🛠 Modularization
+
+The project is organized into a modular structure for better scalability and maintainability:
+
+### Modules:
+
+- **composeApp**: The main application module, containing platform-specific entry points and UI logic.
+- **Core**: Contains shared utilities, network logic, and common configurations used across the project.
+- **DS (Design System)**: Manages UI components, styles, and themes to ensure design consistency across the app.
+- **Common**: Holds shared business logic, domain models, and other common utilities that are used across platforms.
 
 ## ✍️ Prerequisites
 
@@ -61,6 +80,6 @@ This is a Kotlin Multiplatform project targeting Android, iOS.
 
 5. **Run the App:**
 
-- Build and run the Github KotlinPop in Android Studio.
+    - Build and run the Github KotlinPop in Android Studio.
 
 Congratulations! You have successfully set up the environment to test the Github KotlinPop project on your local machine. If you encounter any issues, feel free to reach out for assistance. Enjoy!
