@@ -21,8 +21,12 @@ compose-navigation = "2.8.0-alpha10"
 pagingCommon = "3.3.0-alpha02-0.4.0"
 pagingComposeCommon = "3.3.0-alpha02-0.4.0"
 landscapistCoil3 = "2.4.0"
+webviewMultiplatformMobile = "1.1.0"
 
 [libraries]
+
+# WebView
+webview-multiplatform-mobile = { module = "io.github.final-class:webview-multiplatform-mobile", version.ref = "webviewMultiplatformMobile" }
 
 # Landscapist Coil3
 landscapist-coil3 = { module = "com.github.skydoves:landscapist-coil3", version.ref = "landscapistCoil3" }

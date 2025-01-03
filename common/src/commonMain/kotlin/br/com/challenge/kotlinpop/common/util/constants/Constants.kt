@@ -49,4 +49,9 @@ object Constants {
     object Image {
         const val KEY_IMAGE_DEFAULT_URL = "https://avatars.githubusercontent.com/u/123456?v=4"
     }
+
+    // Contains constants for Github
+    object Github {
+        const val KEY_GITHUB_DEFAULT_URL = "https://github.com/"
+    }
 }

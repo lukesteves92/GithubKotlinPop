@@ -50,6 +50,9 @@ kotlin {
             // Coil
             implementation(libs.landscapist.coil3)
 
+            // WebView
+            implementation(libs.webview.multiplatform.mobile)
+
             // Common - Lib
             implementation(project(":common"))
 

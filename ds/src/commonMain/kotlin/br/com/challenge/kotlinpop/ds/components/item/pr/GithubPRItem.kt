@@ -1,5 +1,6 @@
 package br.com.challenge.kotlinpop.ds.components.item.pr
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import br.com.challenge.kotlinpop.common.domain.model.pr.main.GithubPRResultItemDomain
+import br.com.challenge.kotlinpop.common.util.constants.Constants.Github.KEY_GITHUB_DEFAULT_URL
 import br.com.challenge.kotlinpop.common.util.constants.Constants.Image.KEY_IMAGE_DEFAULT_URL
 import br.com.challenge.kotlinpop.common.util.constants.Constants.Numbers.KEY_NUMBER_TWO
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderRadiusSm
@@ -32,6 +34,8 @@ import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenLarge
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenSmallMedium
 import br.com.challenge.kotlinpop.ds.ui.theme.KotlinPopTheme
 import br.com.challenge.kotlinpop.ds.ui.typography.KotlinPopTypography
+import com.final_class.webview_multiplatform_mobile.webview.WebViewPlatform
+import com.final_class.webview_multiplatform_mobile.webview.controller.rememberWebViewController
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.coil3.CoilImage
 
@@ -40,8 +44,14 @@ fun GithubPRItem(
     model: GithubPRResultItemDomain,
     modifier: Modifier = Modifier
 ) {
+
+    val webViewController by rememberWebViewController()
+
+    WebViewPlatform(webViewController = webViewController)
+
     Card(
         modifier = modifier
+            .clickable { webViewController.open(url = model.htmlUrl ?: KEY_GITHUB_DEFAULT_URL) }
             .padding(kotlinPopDimenSmallMedium)
             .fillMaxWidth(),
         shape = RoundedCornerShape(kotlinPopBorderRadiusSm),
