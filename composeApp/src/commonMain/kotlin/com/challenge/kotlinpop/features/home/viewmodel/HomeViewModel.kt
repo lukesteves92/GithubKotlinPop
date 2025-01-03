@@ -11,19 +11,34 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel responsible for managing the state and actions of the Home screen.
+ * This ViewModel interacts with the `GetHomeUseCase` to fetch GitHub repositories
+ * and handles user actions such as navigating to details or fetching data.
+ *
+ * The state of the UI is represented by a `StateFlow`, and actions are processed via a `MutableSharedFlow`.
+ */
 class HomeViewModel(
     private val getHomeUseCase: GetHomeUseCase
 ) : ViewModel() {
 
+    // Flow to collect and process user actions asynchronously
     private val pendingActions = MutableSharedFlow<HomeAction>()
+
+    // Mutable state to manage the UI state, exposed as an immutable StateFlow
     private var _state: MutableStateFlow<HomeState> =
         MutableStateFlow(HomeState.Idle)
     val state: StateFlow<HomeState> = _state
 
     init {
+        // Start processing actions as soon as the ViewModel is initialized
         handleActions()
     }
 
+    /**
+     * Fetches GitHub repositories using the `GetHomeUseCase`.
+     * Updates the state with the fetched data to be displayed on the Home screen.
+     */
     private fun getGithubRepos() {
         viewModelScope.launch {
             HomeState.ShowData(
@@ -32,6 +47,11 @@ class HomeViewModel(
         }
     }
 
+    /**
+     * Triggers navigation to the Details screen by updating the state with the necessary parameters.
+     * @param creator The creator/owner of the repository.
+     * @param repo The name of the repository.
+     */
     private fun requestNavigateToDetails(creator: String, repo: String) {
         viewModelScope.launch {
             HomeState.NavigateToDetails(
@@ -41,7 +61,10 @@ class HomeViewModel(
         }
     }
 
-    // Handle pending actions and triggers appropriate behavior based on the action type
+    /**
+     * Collects actions emitted to the `pendingActions` flow and processes them.
+     * Each action triggers a specific behavior, such as fetching data or navigating to details.
+     */
     private fun handleActions() = viewModelScope.launch {
         pendingActions.collect { action ->
             when (action) {
@@ -55,20 +78,27 @@ class HomeViewModel(
         }
     }
 
-    // Submits an action by emitting it to the shared flow of pending actions
+    /**
+     * Submits an action to the `pendingActions` flow to be processed.
+     * @param action The action to be processed.
+     */
     fun submitAction(action: HomeAction) {
         viewModelScope.launch {
             pendingActions.emit(action)
         }
     }
 
-    // Sets the state to idle, usually when no specific actions are triggered
+    /**
+     * Sets the state to idle, typically when no specific actions are triggered.
+     */
     private fun requestIdleState() {
         viewModelScope.launch {
             HomeState.Idle.updateState()
         }
     }
 
-    // Extension function to update the state with the new home state value
+    /**
+     * Updates the current state of the ViewModel by applying the new `HomeState` value.
+     */
     private fun HomeState.updateState() = _state.update { this }
 }

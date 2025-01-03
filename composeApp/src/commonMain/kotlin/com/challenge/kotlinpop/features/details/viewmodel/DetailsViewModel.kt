@@ -16,23 +16,39 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel responsible for managing the state and actions of the Details screen.
+ * This ViewModel interacts with the `GetDetailsUseCase` to fetch GitHub Pull Requests
+ * and handles user actions such as requesting data and handling back navigation.
+ *
+ * The state of the UI is represented by a `StateFlow`, and actions are processed via a `MutableSharedFlow`.
+ */
 class DetailsViewModel(
     private val getDetailsUseCase: GetDetailsUseCase,
     private val savedStateHandle: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
 
+    // Flow to collect and process user actions asynchronously
     private val pendingActions = MutableSharedFlow<DetailsAction>()
+
+    // Mutable state to manage the UI state, exposed as an immutable StateFlow
     private var _state: MutableStateFlow<DetailsState> =
         MutableStateFlow(DetailsState.Idle)
     val state: StateFlow<DetailsState> = _state
 
+    // Current repository creator and repo name, extracted from the navigation arguments
     private var currentCreator = savedStateHandle.toRoute<HomeRoutes.Details>().creator
     private val currentRepo = savedStateHandle.toRoute<HomeRoutes.Details>().repo
 
     init {
+        // Start processing actions as soon as the ViewModel is initialized
         handleActions()
     }
 
+    /**
+     * Initiates a request to fetch GitHub Pull Requests for the current repository.
+     * Updates the state to Loading and calls the use case to retrieve data.
+     */
     private fun requestGithubPullRequests() {
         viewModelScope.launch {
             DetailsState.Loading.updateState()
@@ -40,6 +56,12 @@ class DetailsViewModel(
         }
     }
 
+    /**
+     * Fetches GitHub Pull Requests using the `GetDetailsUseCase`.
+     * Updates the state based on the result:
+     * - Shows data if successful and not empty.
+     * - Displays an error message if the result is empty or there is an error.
+     */
     private fun getGithubPullRequests() {
         viewModelScope.launch {
             getDetailsUseCase.getGithubPullRequests(
@@ -47,7 +69,7 @@ class DetailsViewModel(
                 repo = currentRepo
             ).singleOrThrow(
                 success = { data ->
-                    if(data.isEmpty()) {
+                    if (data.isEmpty()) {
                         DetailsState.ShowError(message = KEY_NO_PULL_REQUESTS_MESSAGE_DEFAULT).updateState()
                     } else {
                         DetailsState.ShowData(
@@ -63,31 +85,41 @@ class DetailsViewModel(
         }
     }
 
-    // Handle pending actions and triggers appropriate behavior based on the action type
+    /**
+     * Collects actions emitted to the `pendingActions` flow and processes them.
+     * Each action triggers a specific behavior, such as fetching data or handling back navigation.
+     */
     private fun handleActions() = viewModelScope.launch {
         pendingActions.collect { action ->
             when (action) {
-                is DetailsAction.Idle -> {}
+                is DetailsAction.Idle -> {} // No action required for Idle state
                 is DetailsAction.RequestOnBackPressed -> requestOnBackPressed()
                 is DetailsAction.RequestData -> requestGithubPullRequests()
             }
         }
     }
 
+    /**
+     * Handles the back navigation action by updating the state to `OnBackPressed`.
+     */
     private fun requestOnBackPressed() {
         viewModelScope.launch {
             DetailsState.OnBackPressed.updateState()
         }
     }
 
-    // Submits an action by emitting it to the shared flow of pending actions
+    /**
+     * Submits an action to the `pendingActions` flow to be processed.
+     * @param action The action to be processed.
+     */
     fun submitAction(action: DetailsAction) {
         viewModelScope.launch {
             pendingActions.emit(action)
         }
     }
 
-    // Extension function to update the state with the new home state value
+    /**
+     * Updates the current state of the ViewModel by applying the new `DetailsState` value.
+     */
     private fun DetailsState.updateState() = _state.update { this }
-
 }
