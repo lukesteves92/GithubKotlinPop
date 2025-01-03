@@ -27,6 +27,7 @@ import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenLarge
 import br.com.challenge.kotlinpop.common.util.modifier.defaultScreenColumnModifier
 import br.com.challenge.kotlinpop.ds.components.about.AboutComponent
 import br.com.challenge.kotlinpop.ds.components.chip.CustomChip
+import br.com.challenge.kotlinpop.ds.components.error.ApiErrorScreen
 import br.com.challenge.kotlinpop.ds.components.item.repo.GithubRepositoryItem
 import br.com.challenge.kotlinpop.ds.components.loading.Loading
 import br.com.challenge.kotlinpop.ds.components.top.KotlinPopTopBar
@@ -95,18 +96,24 @@ fun HomeContent(
                         action(HomeAction.Idle)
                         navigateToDetails(state.creator, state.repo)
                     }
+
                     is HomeState.ShowData -> {
                         val pagedList = state.data.collectAsLazyPagingItems()
-                        PagingColumn(data = pagedList, content = { item ->
-                            GithubRepositoryItem(
-                                model = item,
-                                onClick = { creator, repo ->
-                                    action(HomeAction.RequestNavigateToDetails(
-                                        creator = creator, repo = repo
-                                    ))
-                                }
-                            )
-                        })
+                        PagingColumn(
+                            data = pagedList,
+                            action = action,
+                            content = { item ->
+                                GithubRepositoryItem(
+                                    model = item,
+                                    onClick = { creator, repo ->
+                                        action(
+                                            HomeAction.RequestNavigateToDetails(
+                                                creator = creator, repo = repo
+                                            )
+                                        )
+                                    }
+                                )
+                            })
                     }
                 }
             }
@@ -117,7 +124,8 @@ fun HomeContent(
 @Composable
 fun <T : Any> PagingColumn(
     data: LazyPagingItems<T>,
-    content: @Composable (T) -> Unit
+    content: @Composable (T) -> Unit,
+    action: (HomeAction) -> Unit
 ) {
 
     CustomChip(data.itemCount.getTotalRepositories())
@@ -133,7 +141,9 @@ fun <T : Any> PagingColumn(
             when {
                 refresh is LoadStateNotLoading && data.itemCount < KEY_NUMBER_ONE -> {
                     item {
-
+                        ApiErrorScreen(
+                            onClick = { action(HomeAction.RequestData) }
+                        )
                     }
                 }
 
@@ -151,13 +161,17 @@ fun <T : Any> PagingColumn(
 
                 refresh is LoadStateError -> {
                     item {
-
+                        ApiErrorScreen(
+                            onClick = { action(HomeAction.RequestData) }
+                        )
                     }
                 }
 
                 append is LoadStateError -> {
                     item {
-
+                        ApiErrorScreen(
+                            onClick = { action(HomeAction.RequestData) }
+                        )
                     }
                 }
             }

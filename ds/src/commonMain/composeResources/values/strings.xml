@@ -1,5 +1,6 @@
 <resources>
     <!--    Button Component-->
     <string name="kotlin_pop_bt_about_txt">About</string>
+    <string name="kotlin_pop_bt_re_try_txt">Try Again</string>
 
 </resources>

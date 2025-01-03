@@ -30,8 +30,8 @@ object Constants {
         const val KEY_API_QUERY_REPO = "repo"
         const val KEY_API_CODE_SUCCESS_MIN = 200
         const val KEY_API_CODE_SUCCESS_MAX = 299
-        const val KEY_API_ERROR_MESSAGE_DEFAULT = "Não conseguimos carregar suas informações"
-        const val KEY_INTERNET_ERROR_MESSAGE_DEFAULT = "Parece que você está sem internet"
+        const val KEY_API_ERROR_MESSAGE_DEFAULT = "We couldn't load your information"
+        const val KEY_INTERNET_ERROR_MESSAGE_DEFAULT = "It looks like you're offline"
     }
 
     // Contains constants for Design keys
