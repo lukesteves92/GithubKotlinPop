@@ -1,8 +1,12 @@
 package com.challenge.kotlinpop.features.details.screen
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
@@ -17,9 +21,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.challenge.kotlinpop.common.extensions.string.getNameRepository
+import br.com.challenge.kotlinpop.common.extensions.string.getTotalRepositories
+import br.com.challenge.kotlinpop.common.util.constants.Constants.Numbers.KEY_NUMBER_ZERO
+import br.com.challenge.kotlinpop.common.util.constants.Constants.Text.EMPTY_STRING_REPO
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenLarge
 import br.com.challenge.kotlinpop.common.util.modifier.defaultScreenColumnModifier
 import br.com.challenge.kotlinpop.ds.components.about.AboutComponent
+import br.com.challenge.kotlinpop.ds.components.chip.CustomChip
 import br.com.challenge.kotlinpop.ds.components.error.ApiErrorScreen
 import br.com.challenge.kotlinpop.ds.components.item.pr.GithubPRItem
 import br.com.challenge.kotlinpop.ds.components.loading.Loading
@@ -57,6 +66,8 @@ fun DetailsContent(
 ) {
 
     var showAboutContent by remember { mutableStateOf(false) }
+    var showTotalPullRequests by remember { mutableStateOf(KEY_NUMBER_ZERO) }
+    var showRepoName by remember { mutableStateOf(EMPTY_STRING_REPO) }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -65,7 +76,6 @@ fun DetailsContent(
             showAboutContent = showAboutContent,
             onClickAbout = { condition -> showAboutContent = condition },
             isNavigation = true,
-            navigationText = "Nome Repositório",
             onClick = { action(DetailsAction.RequestOnBackPressed) }
         ) },
         bottomBar = {},
@@ -82,6 +92,17 @@ fun DetailsContent(
                     AboutComponent(items = Platform().toModel())
                 }
 
+                Row(
+                    modifier = Modifier
+                        .padding(kotlinPopDimenLarge)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    CustomChip(showTotalPullRequests.getTotalRepositories())
+                    CustomChip(showRepoName.getNameRepository())
+                }
+
                 // Handle various states of the registration process
                 when (state) {
                     is DetailsState.Idle -> {}
@@ -95,6 +116,8 @@ fun DetailsContent(
                         onBackPressed.invoke()
                     }
                     is DetailsState.ShowData -> {
+                        showTotalPullRequests = state.data.size
+                        showRepoName = state.repo
                         LazyColumn(
                             modifier = Modifier.fillMaxSize()
                         ) {

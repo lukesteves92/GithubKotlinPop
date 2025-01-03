@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import br.com.challenge.kotlinpop.common.domain.components.icon.IconComponentModel
 import br.com.challenge.kotlinpop.common.domain.components.image.ImageComponentModel
-import br.com.challenge.kotlinpop.common.util.constants.Constants.Text.EMPTY_STRING_DEFAULT
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderWidthLg
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderWidthSm
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimen4XsLarge
@@ -32,6 +31,7 @@ import br.com.challenge.kotlinpop.ds.ui.typography.KotlinPopTypography
 import br.com.challenge.kotlinpop.ds.ui.typography.LTAsusFontFamily
 import githubkotlinpop.ds.generated.resources.Res
 import githubkotlinpop.ds.generated.resources.kotlin_pop_bt_about_txt
+import githubkotlinpop.ds.generated.resources.kotlin_pop_bt_back_txt
 import githubkotlinpop.ds.generated.resources.kotlin_pop_ic_arrow_left
 import githubkotlinpop.ds.generated.resources.kotlin_pop_logo
 import org.jetbrains.compose.resources.painterResource
@@ -43,7 +43,6 @@ fun KotlinPopTopBar(
     isNavigation: Boolean = false,
     showAboutContent: Boolean,
     navigationIcon: Painter = painterResource(Res.drawable.kotlin_pop_ic_arrow_left),
-    navigationText: String = EMPTY_STRING_DEFAULT,
     onClickAbout: (Boolean) -> Unit = {},
     onClick: () -> Unit = {}
 ) {
@@ -82,7 +81,7 @@ fun KotlinPopTopBar(
                 Text(
                     modifier = Modifier.padding(start = kotlinPopDimenSmallMedium),
                     fontFamily = LTAsusFontFamily(),
-                    text = navigationText,
+                    text = stringResource(Res.string.kotlin_pop_bt_back_txt),
                     color = KotlinPopTheme.colorScheme.text.primary,
                     style = KotlinPopTypography.subtitleSM
                 )

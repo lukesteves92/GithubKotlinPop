@@ -3,4 +3,7 @@
     <string name="kotlin_pop_bt_about_txt">About</string>
     <string name="kotlin_pop_bt_re_try_txt">Try Again</string>
 
+    <!--    Top Bar Component-->
+    <string name="kotlin_pop_bt_back_txt">Back</string>
+
 </resources>

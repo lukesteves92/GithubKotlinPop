@@ -50,7 +50,7 @@ fun ApiErrorScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(KotlinPopTheme.colorScheme.screen.background)
-            .padding(horizontal = kotlinPopDimenLarge),
+            .padding(kotlinPopDimenLarge),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

@@ -23,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import br.com.challenge.kotlinpop.common.domain.model.pr.main.GithubPRResultItemDomain
 import br.com.challenge.kotlinpop.common.util.constants.Constants.Image.KEY_IMAGE_DEFAULT_URL
+import br.com.challenge.kotlinpop.common.util.constants.Constants.Numbers.KEY_NUMBER_TWO
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderRadiusSm
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderRadiusXs
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderWidthXs
@@ -73,7 +74,7 @@ fun GithubPRItem(
                         text = model.body.orEmpty(),
                         style = KotlinPopTypography.paragraphMD,
                         color = KotlinPopTheme.colorScheme.text.primary,
-                        maxLines = 2,
+                        maxLines = KEY_NUMBER_TWO,
                         overflow = TextOverflow.Ellipsis
                     )
 

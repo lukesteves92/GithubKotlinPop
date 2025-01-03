@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import br.com.challenge.kotlinpop.common.domain.components.icon.IconComponentModel
 import br.com.challenge.kotlinpop.common.domain.model.repository.item.GithubRepositoryItemDomain
 import br.com.challenge.kotlinpop.common.util.constants.Constants.Image.KEY_IMAGE_DEFAULT_URL
+import br.com.challenge.kotlinpop.common.util.constants.Constants.Numbers.KEY_NUMBER_TWO
 import br.com.challenge.kotlinpop.common.util.constants.Constants.Numbers.KEY_NUMBER_ZERO
 import br.com.challenge.kotlinpop.common.util.constants.Constants.Numbers.KEY_NUMBER_ZERO_DOUBLE
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderRadiusSm
@@ -95,7 +96,7 @@ fun GithubRepositoryItem(
                         text = model.description.orEmpty(),
                         style = KotlinPopTypography.paragraphMD,
                         color = KotlinPopTheme.colorScheme.text.primary,
-                        maxLines = 2,
+                        maxLines = KEY_NUMBER_TWO,
                         overflow = TextOverflow.Ellipsis
                     )
 

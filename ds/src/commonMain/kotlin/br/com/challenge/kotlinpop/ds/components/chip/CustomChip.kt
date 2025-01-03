@@ -10,6 +10,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
+import br.com.challenge.kotlinpop.common.util.constants.Constants.Numbers.KEY_NUMBER_ONE
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderRadiusSm
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopBorderWidthSm
 import br.com.challenge.kotlinpop.common.util.dimens.Dimens.kotlinPopDimenSmallMedium
@@ -41,7 +43,9 @@ fun CustomChip(
             modifier = Modifier
                 .padding(kotlinPopDimenSmallMedium),
             style = KotlinPopTypography.headingXS,
-            color = KotlinPopTheme.colorScheme.text.primary
+            color = KotlinPopTheme.colorScheme.text.primary,
+            maxLines = KEY_NUMBER_ONE,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }

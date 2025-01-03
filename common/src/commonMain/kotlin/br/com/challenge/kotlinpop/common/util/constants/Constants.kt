@@ -5,8 +5,7 @@ object Constants {
     // Contains default text-related constants used throughout the application.
     object Text {
         const val EMPTY_STRING_DEFAULT = ""
-        const val EMPTY_SPACE_DEFAULT = " "
-        const val CURSOR_DEFAULT = "|"
+        const val EMPTY_STRING_REPO = "None"
     }
 
     // Contains numeric constants used for various purposes such as animations and limits.
@@ -15,14 +14,7 @@ object Constants {
         const val KEY_NUMBER_ZERO_DOUBLE = 0.0
         const val KEY_NUMBER_ONE = 1
         const val KEY_NUMBER_TWO = 2
-        const val KEY_NUMBER_THREE = 3
-        const val KEY_NUMBER_FOUR = 4
-        const val KEY_NUMBER_FIVE = 5
-        const val KEY_NUMBER_EIGHT = 8
-        const val KEY_DURATION_ANIMATION_MIN = 500
-        const val KEY_TOAST_DURATION_MAX: Long = 5000
     }
-
 
     // Contains constants for API responses and error messages.
     object Api {
@@ -32,19 +24,7 @@ object Constants {
         const val KEY_API_CODE_SUCCESS_MAX = 299
         const val KEY_API_ERROR_MESSAGE_DEFAULT = "We couldn't load your information"
         const val KEY_INTERNET_ERROR_MESSAGE_DEFAULT = "It looks like you're offline"
-    }
-
-    // Contains constants for Design keys
-    object DesignTokens {
-        // FontWeight
-        const val KEY_LIGHT: Int = 300
-        const val KEY_BOLD: Int = 700
-
-        // Opacity
-        const val KEY_KOTLIN_POP_OPACITY_08_PERCENT: Float = 0.08f
-        const val KEY_KOTLIN_POP_OPACITY_09_PERCENT: Float = 0.09f
-        const val KEY_KOTLIN_POP_OPACITY_10_PERCENT: Float = 0.1f
-
+        const val KEY_NO_PULL_REQUESTS_MESSAGE_DEFAULT = "No Pull Requests are available"
     }
 
     // Contains constants for About Component

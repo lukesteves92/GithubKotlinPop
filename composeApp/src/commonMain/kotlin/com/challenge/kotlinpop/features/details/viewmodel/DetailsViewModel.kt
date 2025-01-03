@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import br.com.challenge.kotlinpop.common.util.constants.Constants.Api.KEY_NO_PULL_REQUESTS_MESSAGE_DEFAULT
 import br.com.challenge.kotlinpop.core.navigation.HomeRoutes
 import br.com.challenge.kotlinpop.core.singleorthrow.singleOrThrow
 import com.challenge.kotlinpop.domain.usecase.details.GetDetailsUseCase
@@ -46,7 +47,14 @@ class DetailsViewModel(
                 repo = currentRepo
             ).singleOrThrow(
                 success = { data ->
-                    DetailsState.ShowData(data = data).updateState()
+                    if(data.isEmpty()) {
+                        DetailsState.ShowError(message = KEY_NO_PULL_REQUESTS_MESSAGE_DEFAULT).updateState()
+                    } else {
+                        DetailsState.ShowData(
+                            repo = currentRepo,
+                            data = data
+                        ).updateState()
+                    }
                 },
                 error = { error ->
                     DetailsState.ShowError(message = error.message).updateState()
@@ -76,12 +84,6 @@ class DetailsViewModel(
     fun submitAction(action: DetailsAction) {
         viewModelScope.launch {
             pendingActions.emit(action)
-        }
-    }
-
-    private fun requestIdleState() {
-        viewModelScope.launch {
-            DetailsState.Idle.updateState()
         }
     }
 

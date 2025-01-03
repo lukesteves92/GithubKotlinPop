@@ -4,8 +4,8 @@ import br.com.challenge.kotlinpop.common.domain.model.pr.main.GithubPRResultItem
 
 sealed interface DetailsState {
     data object Idle : DetailsState
-    data object Loading: DetailsState
-    data object OnBackPressed: DetailsState
-    data class ShowData(val data: List<GithubPRResultItemDomain>): DetailsState
-    data class ShowError(val message: String): DetailsState
+    data object Loading : DetailsState
+    data object OnBackPressed : DetailsState
+    data class ShowData(val data: List<GithubPRResultItemDomain>, val repo: String) : DetailsState
+    data class ShowError(val message: String) : DetailsState
 }
