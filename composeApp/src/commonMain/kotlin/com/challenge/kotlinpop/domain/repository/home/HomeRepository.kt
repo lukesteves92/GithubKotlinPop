@@ -1,4 +1,4 @@
-package com.challenge.kotlinpop.domain.repository
+package com.challenge.kotlinpop.domain.repository.home
 
 import androidx.paging.PagingData
 import br.com.challenge.kotlinpop.common.domain.model.repository.item.GithubRepositoryItemDomain

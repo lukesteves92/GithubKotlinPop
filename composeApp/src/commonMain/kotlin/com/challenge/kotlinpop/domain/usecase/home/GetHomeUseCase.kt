@@ -1,10 +1,9 @@
 package com.challenge.kotlinpop.domain.usecase.home
 
-
 import androidx.paging.PagingData
 import br.com.challenge.kotlinpop.common.domain.model.repository.item.GithubRepositoryItemDomain
 import br.com.challenge.kotlinpop.common.domain.request.PagingRequest
-import com.challenge.kotlinpop.domain.repository.HomeRepository
+import com.challenge.kotlinpop.domain.repository.home.HomeRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetHomeUseCase(private val repository: HomeRepository) {

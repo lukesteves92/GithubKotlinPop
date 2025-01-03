@@ -21,7 +21,14 @@ fun HomeNavHost(
     ) {
         composable<HomeRoutes.Home> {
             HomeScreen(
-                navigateToDetails = { navHostController.navigate(HomeRoutes.Details) }
+                navigateToDetails = { creator, repo ->
+                    navHostController.navigate(
+                        HomeRoutes.Details(
+                            creator = creator,
+                            repo = repo
+                        )
+                    )
+                }
             )
         }
 

@@ -1,24 +1,21 @@
-package com.challenge.kotlinpop.data.repository
+package com.challenge.kotlinpop.data.repository.home
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import br.com.challenge.kotlinpop.common.data.mapping.repository.toDomain
-import br.com.challenge.kotlinpop.common.data.response.repository.item.GithubRepositoryItemResponse
 import br.com.challenge.kotlinpop.common.data.response.repository.result.GithubRepositoryResultResponse
 import br.com.challenge.kotlinpop.common.domain.model.repository.item.GithubRepositoryItemDomain
 import br.com.challenge.kotlinpop.common.domain.request.PagingRequest
+import br.com.challenge.kotlinpop.core.endpoints.home.HomeRoutes
 import br.com.challenge.kotlinpop.core.paging.BasePagingSource
 import br.com.challenge.kotlinpop.core.wrapper.main.RequestWrapper
-import com.challenge.kotlinpop.domain.repository.HomeRepository
+import com.challenge.kotlinpop.domain.repository.home.HomeRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOn
 
 class HomeRepositoryImpl(
     private val httpClient: HttpClient,
@@ -30,10 +27,10 @@ class HomeRepositoryImpl(
            BasePagingSource { page, _ ->
                wrapper.wrapper(
                    call = {
-                       httpClient.get("/search/repositories") {
-                           parameter("page", page)
-                           parameter("q", pagingRequest.language)
-                           parameter("sort", pagingRequest.sort)
+                       httpClient.get(HomeRoutes.GetRepositories.path) {
+                           parameter(pagingRequest.pageId, page)
+                           parameter(pagingRequest.languageId, pagingRequest.language)
+                           parameter(pagingRequest.sortId, pagingRequest.sort)
                        }
                    },
                    responseHandler = { response -> response.body<GithubRepositoryResultResponse>().githubRepositoryItemResponse?.map { it.toDomain() } ?: emptyList() }

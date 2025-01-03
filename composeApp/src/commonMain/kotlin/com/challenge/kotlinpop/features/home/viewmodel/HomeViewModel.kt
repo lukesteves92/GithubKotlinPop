@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val getHomeUseCase: GetHomeUseCase
-): ViewModel() {
+) : ViewModel() {
 
     private val pendingActions = MutableSharedFlow<HomeAction>()
     private var _state: MutableStateFlow<HomeState> =
@@ -32,12 +32,25 @@ class HomeViewModel(
         }
     }
 
+    private fun requestNavigateToDetails(creator: String, repo: String) {
+        viewModelScope.launch {
+            HomeState.NavigateToDetails(
+                creator = creator,
+                repo = repo
+            ).updateState()
+        }
+    }
+
     // Handle pending actions and triggers appropriate behavior based on the action type
     private fun handleActions() = viewModelScope.launch {
         pendingActions.collect { action ->
             when (action) {
-                is HomeAction.Idle -> {}
+                is HomeAction.Idle -> requestIdleState()
                 is HomeAction.RequestData -> getGithubRepos()
+                is HomeAction.RequestNavigateToDetails -> requestNavigateToDetails(
+                    creator = action.creator,
+                    repo = action.repo
+                )
             }
         }
     }
@@ -46,6 +59,13 @@ class HomeViewModel(
     fun submitAction(action: HomeAction) {
         viewModelScope.launch {
             pendingActions.emit(action)
+        }
+    }
+
+    // Sets the state to idle, usually when no specific actions are triggered
+    private fun requestIdleState() {
+        viewModelScope.launch {
+            HomeState.Idle.updateState()
         }
     }
 

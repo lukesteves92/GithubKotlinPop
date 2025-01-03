@@ -8,6 +8,8 @@ sealed interface HomeRoutes {
     data object Home : HomeRoutes
 
     @Serializable
-    data object Details : HomeRoutes
-
+    data class Details(
+        val creator: String,
+        val repo: String
+    ) : HomeRoutes
 }
